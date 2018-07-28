@@ -1,0 +1,21 @@
+{
+  "name": "js-data-structures",
+  "version": "1.0.0",
+  "description": "freeCodeCamp data structures problems",
+  "main": "circular-queue.js",
+  "scripts": {
+    "test": "jest --watchAll",
+    "prettier": "prettier --write **/*.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^23.4.1",
+    "jest-cli": "^23.4.1"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "prettier": "^1.13.7"
+  }
+}
