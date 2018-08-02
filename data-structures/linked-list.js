@@ -20,16 +20,6 @@ function LinkedList() {
       head = new Node(element);
     } else {
 
-      // function lastNode(node, element) {
-      //   if (node.next === null) {
-      //     node.next = new Node(element);
-      //   } else {
-      //     lastNode(node.next, element);
-      //   }
-      // }
-
-      // lastNode(head, element);
-
       let currentNode = head;
 
       while(currentNode.next) {
@@ -110,6 +100,35 @@ function LinkedList() {
       }
     }
     return currentElement.element;
+  }
+
+  this.addAt = function(index, element) {
+    let currentIndex = 0;
+    let currentElement = head;
+    let prevElement = null;
+
+    if (index < 0 || index >= this.size()) {
+      return false;
+    };
+
+    const newNode = new Node(element);
+    while (currentIndex <= index) {
+      if (currentIndex === index) {
+        if (prevElement === null) {
+          head = newNode;
+        } else {
+          prevElement.next = newNode;
+          newNode.next = currentElement;
+        }
+        length++;
+        break;
+      } else {
+        prevElement = currentElement;
+        currentIndex++;
+        currentElement = currentElement.next;
+      }
+    }
+    return newNode.element;
   }
 }
 
