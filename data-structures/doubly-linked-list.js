@@ -70,15 +70,32 @@ const DoublyLinkedList = function() {
       }
     }
   }
+
+  this.reverse = function() {
+    if (this.length === 0) { return null; }
+    let currentElement = new Node(this.tail.data, null);
+    let reverseElement = this.tail;
+    this.head = currentElement;
+    while (reverseElement.prev) {
+      currentElement.next = new Node(reverseElement.prev.data, currentElement);
+      currentElement = currentElement.next;
+      reverseElement = reverseElement.prev;
+      this.tail = currentElement;
+    }
+  }
 };
 
 /////////////////////////////////////////////////////////
 
 const test = new DoublyLinkedList();
 
-console.log(test.add(5));
-console.log(test.add(6));
-console.log(test.remove(6))
+test.add(1);
+test.add(2);
+test.add(3);
+test.add(4);
+test.add(5);
+console.log(test.print());
+test.reverse();
 console.log(test.print())
 
 module.exports = DoublyLinkedList;
