@@ -49,48 +49,13 @@ function BinarySearchTree() {
           return add(num, tree.right);
         }
       }
-    }
-    
+    };
+
     if (this.root === null) {
       this.root = new Node(num);
       return;
     } else {
       return add(num, this.root);
     }
-    
-  } 
-
-  this.isPresent = function(num) {
-    function checkIfPresent(num, tree) {
-      if (num === tree.value) {
-        return true;
-      } else if (num < tree.value) {
-        if (tree.left === null) {
-          return false;
-        } else {
-          return checkIfPresent(num, tree.left);
-        }
-      } else {
-        if (tree.right === null) {
-          return false;
-        } else {
-          return checkIfPresent(num, tree.right);
-        }
-      }
-    }
-    return this.root !== null ? checkIfPresent(num, this.root) : false;
   }
 }
-
-//////////////////////////////
-
-const test = new BinarySearchTree();
-test.add(4);
-test.add(1);
-test.add(7);
-test.add(87);
-test.add(34);
-test.add(45);
-test.add(73);
-test.add(8);
-console.log(displayTree(test))
