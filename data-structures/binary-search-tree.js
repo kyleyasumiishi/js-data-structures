@@ -80,6 +80,42 @@ function BinarySearchTree() {
     }
     return this.root !== null ? checkIfPresent(num, this.root) : false;
   }
+
+  this.findMinHeight = function() {
+    function findMin(tree, count) {
+      if (tree.left === null && tree.right === null) {
+        return count;
+      } else if (tree.left !== null && tree.right !== null) {
+        return Math.min(findMin(tree.left, count + 1), findMin(tree.right, count + 1));
+      } else if (tree.left !== null) {
+        return findMin(tree.left, count + 1);
+      } else {
+        return findMin(tree.right, count + 1);
+      }
+    }
+    return this.root !== null ? findMin(this.root, 0) : -1;
+  }
+
+  this.findMaxHeight = function() {
+    function findMax(tree, count) {
+      if (tree.left === null && tree.right === null) {
+        return count;
+      } else if (tree.left !== null && tree.right !== null) {
+        return Math.max(findMax(tree.left, count + 1), findMax(tree.right, count + 1));
+      } else if (tree.left !== null) {
+        return findMax(tree.left, count + 1);
+      } else {
+        return findMax(tree.right, count + 1)
+      }
+    }
+    return this.root !== null ? findMax(this.root, 0) : -1;
+  }
+
+  this.isBalanced = function() {
+    return this.findMaxHeight() - this.findMinHeight() <= 1 ? true : false;
+  }
+
+
 }
 
 //////////////////////////////
